@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Convite para Madrinha</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="js/quietflow.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Estilos adicionais para as imagens */
+        .card-container {
+            text-align: center; /* Centraliza as imagens */
+            margin-top: 20px; /* Espaço acima das imagens */
+        }
+
+        .special-card {
+            max-width: 100%; /* Ajusta a largura da imagem para não ultrapassar o contêiner */
+            height: auto; /* Mantém a proporção da imagem */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h3>Convite Especial para</h3>
+        <h1 class="title">Verlaynne</h1>
+    </header>
+
+    <div class="container">
+        <div class="cover">
+            <div class="front">
+                <p class="hpy">Aceita</p>
+            </div>
+            <div class="back"></div>
+        </div>
+        <div class="cover2">
+            <div class="front2">
+                <p class="hpy">ser nossa madrinha?</p>
+            </div>
+            <div class="back2"></div>
+        </div>
+        <p class="intro">Querida Verla. <br> <i class="em em-heartpulse"></i></p>
+        <p class="content">Gostaríamos de expressar nossa gratidão pelo seu esforço e dedicação. Seus ensinamentos vão além dos conteúdos, inspirando-nos a crescer como pessoas e a acreditar no nosso potencial. Obrigado por transformar cada aula em uma oportunidade de aprendizado e motivação. Seu impacto em nossas vidas será eterno! 
+
+            Com carinho,  
+            Turma B</p>
+    </div>
+    
+    <footer>
+        <div class="box sound">
+            <div class="hindi">
+                <a onClick="togglePlay()" class="music"><i class="fas fa-music"></i></a>
+            </div>
+            <div class="english">
+                <a onClick="togglePlayEng()" class="music"><i class="fas fa-music"></i></a>
+            </div>
+        </div>
+        <div class="footer-text">
+            <p> <a href="#" id="showCard">Clique aqui</a> para ver algo especial que preparei!</p>
+        </div>
+    </footer>
+
+    <!-- Contêiner de Imagens -->
+    <div class="card-container" id="cardContainer" style="display: none;">
+        <span class="close-btn" id="closeCard">&times;</span>
+        <img src="image/texto1.jpg" alt="Texto 1" class="special-card" id="image1">
+        <img src="image/texto2.jpg" alt="Texto 2" class="special-card" id="image2" style="display: none;">
+    </div>
+
+    <!-- Seção de Áudio -->
+    <audio id="myAudio" class="hidden">
+        <source src="audio/Aquarela.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+    </audio>
+    <audio id="myAudioEng">
+        <source src="audio/english.mp3"></source>
+        Seu navegador não suporta áudio.
+    </audio>
+    <script src="js/main.js"></script>
+    <script>
+        // Efeito visual
+        $("body").quietflow({
+          theme: "bouncingBalls",
+          specificColors: [
+              "rgb(0,152,118)",
+              "rgb(255,32,82)",
+              "rgb(0,168,231)",
+              "aqua"
+          ]
+        });
+
+        // Seção de Áudio
+        var myAudio = document.getElementById("myAudio");
+        var myAudioEng = document.getElementById("myAudioEng");
+        var isPlaying = false;
+
+        function togglePlay() {
+          if (isPlaying) {
+              myAudio.pause();
+          } else {
+              myAudio.play();
+          }
+        }
+        myAudio.onplaying = function() {
+          isPlaying = true;
+        };
+        myAudio.onpause = function() {
+          isPlaying = false;
+        };
+
+        function togglePlayEng() {
+          if (isPlaying) {
+              myAudioEng.pause();
+          } else {
+              myAudioEng.play();
+          }
+        }
+
+        myAudioEng.onplaying = function() {
+          isPlaying = true;
+        };
+        myAudioEng.onpause = function() {
+          isPlaying = false;
+        };
+
+        // Troca de ícones de música
+        $('.sound div').click(function() {
+          $(this).find('i').toggleClass('fa-music fa-pause');
+        });
+
+        // Espera 3 segundos (3000 milissegundos) antes de abrir a carta
+        setTimeout(function() {
+          const container = document.querySelector('.container');
+          container.classList.add('open'); // Adiciona a classe 'open'
+          container.classList.add('open-background'); // Adiciona a nova classe para mudar a cor de fundo
+          document.querySelector('.cover').style.opacity = '1'; // Garante que a carta esteja visível
+          document.querySelector('.cover2').style.opacity = '1'; // Garante que a carta esteja visível
+        }, 10);
+
+        // Alterna entre as imagens no contêiner
+        let currentImage = 1; // Variável para controlar qual imagem está sendo exibida
+
+        document.querySelector('#showCard').addEventListener('click', function(event) {
+            event.preventDefault(); // Impede o comportamento padrão do link
+            const cardContainer = document.querySelector('#cardContainer');
+            cardContainer.style.display = 'flex'; // Mostra o contêiner
+
+        // Mostra a primeira imagem ao abrir
+        document.getElementById('image1').style.display = 'block'; 
+        document.getElementById('image2').style.display = 'none'; 
+    });
+
+    // Alterna entre as imagens ao clicar no contêiner
+    document.querySelector('#cardContainer').addEventListener('click', function() {
+        if (currentImage === 1) {
+            document.getElementById('image1').style.display = 'none'; // Oculta a primeira imagem
+            document.getElementById('image2').style.display = 'block'; // Mostra a segunda imagem
+            currentImage = 2; // Atualiza para a próxima imagem
+        } else {
+            document.getElementById('image1').style.display = 'block'; // Mostra a primeira imagem
+            document.getElementById('image2').style.display = 'none'; // Oculta a segunda imagem
+            currentImage = 1; // Atualiza para a próxima imagem
+        }
+    });
+
+    // Fecha o contêiner de imagens ao clicar no botão de fechar
+    document.querySelector('#closeCard').addEventListener('click', function() {
+        document.querySelector('#cardContainer').style.display = 'none'; // Oculta o contêiner
+    });
+    </script>
+</body>
+</html>

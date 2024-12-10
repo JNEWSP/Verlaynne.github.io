@@ -1,0 +1,200 @@
+/* Importações de fontes */
+@import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Courgette');
+@import url('https://fonts.googleapis.com/css?family=Cookie');
+
+/* Estilos gerais */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Estilos do cabeçalho */
+header {
+    text-align: center;
+}
+
+/* Outros estilos... */
+
+/* Classe para mudar a cor de fundo quando a carta abre */
+.open-background {
+    background-color: rgba(3, 3, 3, 0.253); /* Exemplo de cor de fundo */
+    transition: background-color 0.5s ease; /* Transição suave */
+}
+
+header h1 {
+    color: rgba(13, 19, 1, 0);
+    background-image: url(../image/color5.jpg);
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    animation: animate 15s linear infinite;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 40px;
+}
+
+@keyframes animate {
+    0% {
+        background-position: left 0px top 10px;
+    }
+    40% {
+        background-position: left 800px top 10px;
+    }
+}
+
+header h3 {
+    display: inline-block;
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    margin: 0;
+    margin-top: 10px;
+    font-size: 35px;
+    letter-spacing: 10px;
+    background-color: rgba(0, 0, 0, 0.42);
+    border-radius: 10px;
+    padding: 0 8px;
+    color: #000;
+    padding-bottom: 8px;
+    text-shadow: 0 1px 0 #ccc,
+                0 2px 0 #c9c9c9,
+                0 3px 0 #bbb,
+                0 4px 0 #b9b9b9,
+                0 5px 0 #aaa,
+                0 6px 1px rgba(0,0,0,.1),
+                0 0 5px rgba(0,0,0,.1),
+                0 1px 3px rgba(0,0,0,.3),
+                0 3px 5px rgba(0,0,0,.2),
+                0 5px 10px rgba(0,0,0,.25),
+                0 10px 10px rgba(0,0,0,.2),
+                0 20px 20px rgba(0,0,0,.15);
+}
+
+.container {
+    width: 250px;
+    height: 350px;
+    position: absolute;
+    left: 50%;
+    top: 63%;
+    transform: translate(-50%, -50%);
+    perspective: 1000px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.3);
+}
+
+.cover {
+    width: 130px;
+    height: 100%;
+    position: absolute;
+    left: -1px;
+    transform: rotateY(-20deg);
+    transform-style: preserve-3d;
+    transform-origin: left;
+    backface-visibility: hidden; /* Adicionado */
+    opacity: 0; /* Inicialmente invisível */
+    transition: transform 1s ease-in-out, opacity 1s ease; /* Aumenta a duração da transição */
+    background: url('https://img.freepik.com/fotos-premium/textura-de-aquarela-rosa-pastel-digital_199112-177.jpg?semt=ais_hybrid') center center no-repeat; /* Adicione a URL da imagem aqui */
+    background-size: cover; /* Ajusta o tamanho da imagem para cobrir a área */
+}
+
+.cover2 {
+    width: 130px;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    transform: rotateY(20deg);
+    transform-style: preserve-3d;
+    transform-origin: right;
+    backface-visibility: hidden; /* Adicionado
+        opacity: 0; /* Inicialmente invisível */
+        transition: transform 1s ease-in-out, opacity 1s ease; /* Aumenta a duração da transição */
+        background: url('https://img.freepik.com/fotos-premium/textura-de-aquarela-rosa-pastel-digital_199112-177.jpg?semt=ais_hybrid') center center no-repeat; /* Adicione a URL da imagem aqui */
+        background-size: cover; /* Ajusta o tamanho da imagem para cobrir a área */
+    }
+    
+    .container:hover .cover {
+        transform: rotateY(-145deg);
+        transition: transform 1s ease-in-out, opacity 1s ease; /* Aumenta a duração da transição */
+    }
+    
+    .container:hover .cover2 {
+        transform: rotateY(145deg);
+        transition: transform 1s ease-in-out, opacity 1s ease; /* Aumenta a duração da transição */
+    }
+    
+    .front,
+    .back,
+    .front2,
+    .back2 {
+        margin: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        backface-visibility: hidden; /* Adicionado para ocultar o verso */
+    }
+    
+    .front {
+        background: rgba(255, 255, 255, 0.8);
+        color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        border-radius: 10px;
+        text-align: center; /* Centraliza o texto */
+    }
+    
+    .back {
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        transform: rotateY(180deg);
+        border-radius: 10px;
+    }
+    
+    .front2 {
+        background: rgba(255, 255, 255, 0.8);
+        color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        border-radius: 10px;
+        text-align: center; /* Centraliza o texto */
+    }
+    
+    .back2 {
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        transform: rotateY(180deg);
+        border-radius: 10px;
+    }
+    
+    .footer-text {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .sound {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    
+    .sound div {
+        margin: 0 10px;
+        cursor: pointer;
+    }
+    
+    .sound i {
+        font-size: 24px;
+    }
